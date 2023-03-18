@@ -3,11 +3,10 @@ from pathlib import Path
 
 class SteamSpider(scrapy.Spider):
     name = "strider"
-    start_urls = [
-            'https://store.steampowered.com/search/?sort_by=Reviews_DESC&supportedlang=english&filter=topsellers&ndl=1'
-    ]
+    
+    def start_requests(self):
+        url = "https://quotes.toscrape.com/js/"
+        yield scrapy.Request(url, meta={'playwright': True})
     
     def parse(self, response):
-        filename = 'steam.html'
-        Path(filename).write_bytes(response.body)
-        self.log(f'Saved file {filename}')
+        pass
